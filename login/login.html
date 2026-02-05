@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | FROFETINAL</title>
+
+    <link rel="stylesheet" href="./ligin.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <section class="login-section">
+
+        <div class="login-box">
+
+            <div class="login-logo">
+                <img src="../assets/logo.png" alt="logo">
+                <h2>Welcome Back</h2>
+                <p>Please login to your account</p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="input-box">
+                    <label>Username</label>
+                    <div class="input-field">
+                        <input type="text" id="username" placeholder="Enter username" required>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label>Password</label>
+                    <div class="input-field">
+                        <input type="password" id="password" placeholder="Enter password" required>
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Login <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+
+            </form>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="../register/register.html">Register</a></p>
+            </div>
+
+            <div class="login-footer">
+                <p>© 2026 FROFETINAL. All Rights Reserved.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script>
+        // Toggle Password
+        const togglePassword = document.getElementById("togglePassword");
+        const password = document.getElementById("password");
+
+        togglePassword.addEventListener("click", function () {
+            if (password.type === "password") {
+                password.type = "text";
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+            } else {
+                password.type = "password";
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+            }
+        });
+
+        // Hardcoded Login
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const pass = document.getElementById("password").value.trim();
+
+            // Hardcoded credentials
+            const correctUsername = "dana";
+            const correctPassword = "1234";
+
+            if (username === correctUsername && pass === correctPassword) {
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Login Successful!",
+                    text: "Welcome back, " + username ,
+                    confirmButtonText: "Continue",
+                    background: "#fff",
+                    color: "#111",
+                    confirmButtonColor: "#007bff",
+                    iconColor: "#007bff"
+                }).then(() => {
+                    window.location.href = "../index.html"; // redirect page
+                });
+
+            } else {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Failed!",
+                    text: "Incorrect Username or Password ",
+                    confirmButtonText: "Try Again",
+                    background: "#fff",
+                    color: "#111",
+                    confirmButtonColor: "#007bff",
+                    iconColor: "#ff3b3b"
+                });
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

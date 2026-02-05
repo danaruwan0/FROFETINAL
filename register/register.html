@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | FROFETINAL</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <section class="register-section">
+
+        <div class="register-box">
+
+            <div class="register-logo">
+                <img src="../assets/logo.png" alt="logo">
+                <h2>Create Account</h2>
+                <p>Join with FROFETINAL today</p>
+            </div>
+
+            <form id="registerForm">
+
+                <!-- Full Name -->
+                <div class="input-box">
+                    <label>Full Name</label>
+                    <div class="input-field">
+                        <input type="text" id="fullName" placeholder="Enter full name" required>
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                </div>
+
+                <!-- Username -->
+                <div class="input-box">
+                    <label>Username</label>
+                    <div class="input-field">
+                        <input type="text" id="username" placeholder="Enter username" required>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="input-box">
+                    <label>Email Address</label>
+                    <div class="input-field">
+                        <input type="email" id="email" placeholder="Enter email" required>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="input-box">
+                    <label>Password</label>
+                    <div class="input-field">
+                        <input type="password" id="password" placeholder="Enter password" required>
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="input-box">
+                    <label>Confirm Password</label>
+                    <div class="input-field">
+                        <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+                        <i class="fa-solid fa-eye" id="toggleConfirm"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-btn">
+                    Register <i class="fa-solid fa-user-plus"></i>
+                </button>
+
+            </form>
+
+            <div class="register-footer">
+                <p>Already have an account? <a href="../login/login.html">Login</a></p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        // Toggle Password
+        const togglePassword = document.getElementById("togglePassword");
+        const password = document.getElementById("password");
+
+        togglePassword.addEventListener("click", function () {
+            if (password.type === "password") {
+                password.type = "text";
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+            } else {
+                password.type = "password";
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+            }
+        });
+
+        const toggleConfirm = document.getElementById("toggleConfirm");
+        const confirmPassword = document.getElementById("confirmPassword");
+
+        toggleConfirm.addEventListener("click", function () {
+            if (confirmPassword.type === "password") {
+                confirmPassword.type = "text";
+                toggleConfirm.classList.remove("fa-eye");
+                toggleConfirm.classList.add("fa-eye-slash");
+            } else {
+                confirmPassword.type = "password";
+                toggleConfirm.classList.remove("fa-eye-slash");
+                toggleConfirm.classList.add("fa-eye");
+            }
+        });
+
+        // Register Form Submit
+        const registerForm = document.getElementById("registerForm");
+
+        registerForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const pass = document.getElementById("password").value.trim();
+            const confirmPass = document.getElementById("confirmPassword").value.trim();
+
+            // Check all fields filled
+            if (!fullName || !username || !email || !pass || !confirmPass) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please fill all fields!',
+                    confirmButtonColor: '#007bff'
+                });
+                return;
+            }
+
+            // Check password match
+            if (pass !== confirmPass) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Password Mismatch',
+                    text: 'Passwords do not match!',
+                    confirmButtonColor: '#007bff'
+                });
+                return;
+            }
+
+            // Success
+            Swal.fire({
+                icon: 'success',
+                title: 'Registration Successful!',
+                text: `Welcome, ${fullName} 😎`,
+                confirmButtonText: 'Go to Home',
+                background: '#fff',
+                color: '#111',
+                confirmButtonColor: '#007bff',
+                iconColor: '#007bff'
+            }).then(() => {
+                window.location.href = "../index.html"; // redirect to home page
+            });
+
+            // Optional: Reset form
+            registerForm.reset();
+        });
+    </script>
+
+</body>
+
+</html>
