@@ -23,7 +23,7 @@
             <div class="pageLink">
                 <a href="../index.html">Home</a>
                 <a href="./shop.html">Shop</a>
-               <a href="./collection.html">Collection</a>
+                <a href="./collection.html">Collection</a>
                 <a href="./about.html">About</a>
                 <a href="./journal.html">Journal</a>
                 <a href="./support.html">Support</a>
@@ -40,7 +40,7 @@
             <i class="fa-solid fa-bag-shopping"></i>
 
             <a href="../login/login.html" class="logout-btn">
-              <i class="fa-solid fa-right-from-bracket"></i>
+                <i class="fa-solid fa-right-from-bracket"></i>
             </a>
             <div class="menuicon">
                 <i class="fa-solid fa-bars menu-icon"></i>
@@ -131,70 +131,53 @@
             <i class="fa-solid fa-xmark close-cart"></i>
         </div>
 
-        <div class="cart-body">
-            <div class="cart-item">
-                <img src="../assets/shop/belt.png" alt="Product">
-                <div class="cart-info">
-                    <h4>Belt</h4>
-                    <p>Qty: 1</p>
-                    <span>Rs 1200</span>
-                </div>
-            </div>
-
-            <div class="cart-item">
-                <img src="../assets/shop/blue t shirt.png" alt="Product">
-                <div class="cart-info">
-                    <h4>Formal Shirt</h4>
-                    <p>Qty: 2</p>
-                    <span>Rs 5000</span>
-                </div>
-            </div>
-
-            <div class="cart-item">
-                <img src="../assets/shop/deck shoes.png" alt="Product">
-                <div class="cart-info">
-                    <h4>Deck Shoes</h4>
-                    <p>Qty: 1</p>
-                    <span>Rs 7800</span>
-                </div>
-            </div>
-
-            <div class="cart-item">
-                <img src="../assets/shop/mens denim.png" alt="Product">
-                <div class="cart-info">
-                    <h4>Mens Denim</h4>
-                    <p>Qty: 1</p>
-                    <span>Rs 4600</span>
-                </div>
-            </div>
-
-            <div class="cart-item">
-                <img src="../assets/shop/mens office shirts.png" alt="Product">
-                <div class="cart-info">
-                    <h4>Office Shirt</h4>
-                    <p>Qty: 1</p>
-                    <span>Rs 3800</span>
-                </div>
-            </div>
-
-            <div class="cart-item">
-                <img src="../assets/shop/mens cap.png" alt="Product">
-                <div class="cart-info">
-                    <h4>Mens Cap</h4>
-                    <p>Qty: 1</p>
-                    <span>Rs 1700</span>
-                </div>
-            </div>
-        </div>
+        
+        
 
         <div class="cart-footer">
             <div class="total">
                 <span>Total</span>
-                <strong>Rs 24100</strong>
+                <strong>00.00</strong>
             </div>
-            <button>Checkout</button>
+            <button  id="checkoutBtn">Checkout</button>
         </div>
     </div>
+
+
+    <!-- PAYMENT OVERLAY -->
+<div class="payment-overlay" id="paymentOverlay"></div>
+
+<!-- PAYMENT MODAL -->
+<div class="payment-modal" id="paymentModal">
+    <div class="payment-header">
+        <h2>Payment Details</h2>
+        <i class="fa-solid fa-xmark" id="closePayment"></i>
+    </div>
+
+    <div class="payment-body">
+        <label>Card Holder Name</label>
+        <input type="text" id="cardName" placeholder="Enter card holder name">
+
+        <label>Card Number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+
+        <div class="row">
+            <div>
+                <label>Expiry Date</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+            </div>
+
+            <div>
+                <label>CVV</label>
+                <input type="password" id="cvv" placeholder="123" maxlength="3">
+            </div>
+        </div>
+
+        <button class="buy-now-btn" id="buyNowBtn">Buy Now</button>
+        <p id="paymentMsg"></p>
+    </div>
+</div>
+
 
 
 
